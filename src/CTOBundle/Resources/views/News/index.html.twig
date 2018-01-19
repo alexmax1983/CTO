@@ -1,0 +1,48 @@
+{% extends 'CTOBundle::base.html.twig' %}
+{% block body %}
+    <h3 class="text-success">Список новостей</h3>
+    <button class="btn btn-danger btn-round create-news">
+        <i class="material-icons">add</i> Создать новость
+        <div class="ripple-container"></div></button>
+    {% for article in pagination.items %}
+    <div class="row">
+        <div class="col-md-3 news-column">
+            <p class="text-info">
+                <i>create: </i>{{ article.dateCreate | date("d.m.Y H:m:s") }}<br/>
+                <i>update: </i>{{ article.dateUpdate | date("d.m.Y H:m:s") }}
+            </p>
+            {% if article.urlImage is empty %}
+                <img src="https://valvetimes.com/wp-content/uploads/2017/11/668a8e96b334cc2af53910cf0fbbd2b268bfc556-620x349.jpg"
+                     class="img-rounded img-responsive img-raised"/>
+            {% else %}
+            <img src="{{ article.urlImage }}"
+                 class="img-rounded img-responsive img-raised"/>
+            {% endif %}
+        </div>
+        <div class="col-md-7">
+            {% if article.author is not empty %}
+                <p class="text-success">Автор: {{ article.author.name }}</p>
+            {% else %}
+                <p class="text-danger">Нет автора</p>
+            {% endif %}
+            <h5>{{ article.name }} </h5>
+            <p class="text-justify">{{ article.description }}<br/>
+            <a target="_blank" href="{{ article.urlArticle }}">Подробнее</a>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <i class="material-icons edit-news"
+               data-toggle="tooltip" data-placement="top" title="Редактирование новости"
+               itemid="{{ article.id }}" >edit</i>
+            <i class="material-icons delete-news"
+               itemid="{{ article.id }}"
+               data-toggle="tooltip" data-placement="top" title="Удаление новости">delete</i>
+        </div>
+    </div>
+    {% endfor %}
+<!-- block pagination -->
+<div class="col-md-12 text-center">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% endblock %}

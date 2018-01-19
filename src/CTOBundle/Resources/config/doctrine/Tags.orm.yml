@@ -1,0 +1,27 @@
+CTOBundle\Entity\Tags:
+    type: entity
+    table: null
+    repositoryClass: CTOBundle\Repository\TagsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        parentTag:
+            type: integer
+            nullable: true
+            column: parent_tag
+        dateCreate:
+            type: datetimetz
+            column: date_create
+        dateUpdate:
+            type: datetimetz
+            nullable: true
+            column: date_update
+    lifecycleCallbacks: {  }

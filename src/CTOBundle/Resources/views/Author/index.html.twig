@@ -1,0 +1,37 @@
+{% extends 'CTOBundle::base.html.twig' %}
+{% block body %}
+    <h3 class="text-success">Список авторов</h3>
+    <button class="btn btn-danger btn-round create-author">
+        <i class="material-icons">add</i> Создать автора
+        <div class="ripple-container"></div></button>
+    <table class="table table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Имя автора</th>
+            <th>email</th>
+            <th>дата обновления</th>
+            <th style="width:30px">#</th>
+        </thead>
+    {% for author in pagination.items %}
+        <tr>
+            <td>{{ author.id }}</td>
+            <td>{{ author.name }}</td>
+            <td>{{ author.email }}</td>
+            <td>{{ author.dateUpdate | date("d.m.Y - H:m:s") }}</td>
+            <td>
+                <i class="material-icons edit-author"
+                   data-toggle="tooltip" data-placement="top" title="Редактирование новости"
+                   itemid="{{ author.id }}" >edit</i>
+                <i class="material-icons delete-author"
+                   itemid="{{ author.id }}"
+                   data-toggle="tooltip" data-placement="top" title="Удаление новости">delete</i>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+<!-- block pagination -->
+<div class="col-md-12 text-center">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% endblock %}

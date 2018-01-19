@@ -1,0 +1,27 @@
+CTOBundle\Entity\Author:
+    type: entity
+    table: null
+    repositoryClass: CTOBundle\Repository\AuthorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        email:
+            type: string
+            length: 255
+            nullable: true
+        dateCreate:
+            type: datetimetz
+            column: date_create
+        dateUpdate:
+            type: datetimetz
+            nullable: true
+            column: date_update
+    lifecycleCallbacks: {  }

@@ -1,0 +1,5 @@
+services:
+    cto.example:
+        class: CTOBundle\Services\NewsAPI
+        arguments:
+          ["@service_container"]

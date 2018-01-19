@@ -1,0 +1,18 @@
+.news-column{
+    padding-bottom: 10px;
+}
+
+.edit-news, .delete-news {
+    cursor: pointer;
+}
+.label-create-news{
+    font-size: 14px;
+    color: #0d47a1;
+}
+label.control-label{
+    font-size: 14px !important;
+    color:black !important;
+}
+.text-logo{
+    font-size: 15px;
+}

@@ -1,0 +1,20 @@
+{% extends 'CTOBundle::base.html.twig' %}
+{% block body %}
+    <h3>Создание новости</h3>
+    {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {#{% block _product_name_widget %}#}
+    {#<div class="text_widget" style="border: 1px solid #0d47a1">#}
+    {#{{ block('form_widget_simple') }}#}
+    {#</div>#}
+    {#{% endblock %}#}
+    {##}
+    {{ form_label(form.name, 'Имя автора: ') }}
+    {{ form_widget(form.name) }}
+    {{ form_label(form.email, 'Email автора: ',
+        {'label_attr': {'class': 'label-author'}})}}
+    {{ form_widget(form.email, {'attr' : {'rowspan' : '20'}}) }}
+    {{ form_widget(form.save, { 'label': 'Создать автора' }) }}
+    {{ form_end(form) }}
+{% endblock %}
